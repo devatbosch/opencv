@@ -401,7 +401,7 @@ bool pyopencv_to(PyObject *o, Scalar& s, const ArgInfo& info)
         }
     } else {
         if (PyFloat_Check(o) || PyInt_Check(o)) {
-            s = PyFloat_AsDouble(o);
+             s[0] = PyFloat_AsDouble(o); s[1] = s[2] = s[3] = 0.0f;
         } else {
             failmsg("Scalar value for argument '%s' is not numeric", info.name);
             return false;
